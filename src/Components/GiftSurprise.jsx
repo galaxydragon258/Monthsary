@@ -6,21 +6,21 @@ function GiftSurprise({ onClose }) {
 
   const coupons = [
     {
-      id: 'icecream',
-      title: 'Late-Night Ice Cream Date 🍦',
-      desc: 'Redeemable at any time for your favorite sweet treats with all the toppings.',
+      id: 'Gym-Food-Date',
+      title: 'Gym Foo Date',
+      desc: 'Chichibog sa gym?',
       color: 'bg-rose-50 border-rose-200 text-rose-800'
     },
     {
-      id: 'hugs',
-      title: 'Unlimited Cozy Movie Hugs 🍿',
-      desc: 'Guarantees premium snuggles and complete control of the TV remote.',
+      id: 'cuddle',
+      title: 'Unlimited Cozy Cuddles & Kissies',
+      desc: 'Favorite ko too dalii claim mo na grrr(matagal pa)',
       color: 'bg-pink-50 border-pink-200 text-pink-800'
     },
     {
       id: 'dinner',
-      title: 'Romantic Home-Cooked Dinner 🍝',
-      desc: 'Includes a custom chef-style menu, candlelight, and zero dishwashing duties.',
+      title: 'Date ',
+      desc: 'Heree pleasee date tayo sa labas grrr kunin mo rin to wala ka choice (matagal din..)',
       color: 'bg-amber-50 border-amber-200 text-amber-800'
     }
   ];

@@ -1,26 +1,26 @@
 import React, { useState } from 'react';
-import cherryBlossoms from '../assets/cherry_blossoms.png';
-import starrySky from '../assets/starry_sky.png';
-import cozyCafe from '../assets/cozy_cafe.png';
+import mediaOutdoors from '../assets/media_outdoors.jpg';
+import mediaMirror from '../assets/media_mirror.jpg';
+import mediaCollage from '../assets/media_collage.jpg';
 
 function MemoryGallery({ onClose }) {
   const [activeIndex, setActiveIndex] = useState(0);
 
   const memories = [
     {
-      image: cherryBlossoms,
-      caption: 'Walking together under the cherry blossoms... every step is magical. 🌸',
-      date: 'April 12'
+      image: mediaOutdoors,
+      caption: 'One of my Favorite Picture ',
+      date: 'Pup Days'
     },
     {
-      image: starrySky,
-      caption: 'Looking at the stars, but my favorite view will always be you. 🌙✨',
-      date: 'May 18'
+      image: mediaMirror,
+      caption: 'Picure Bago sakuna (Na Office )',
+      date: 'Gym ni Frelin'
     },
     {
-      image: cozyCafe,
-      caption: 'Cozy coffee dates, warm smiles, and endless giggles together. ☕️💖',
-      date: 'June 05'
+      image: mediaCollage,
+      caption: 'Our first picture sa labas hehe',
+      date: 'Pup Days'
     }
   ];
 
