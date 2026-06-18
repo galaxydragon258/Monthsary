@@ -7,27 +7,67 @@ import LoveLetter from '../Components/LoveLetter';
 function LandingPage() {
   const [activeModal, setActiveModal] = useState(null); // 'gift' | 'gallery' | 'letter' | null
   const [hearts, setHearts] = useState([]);
+  const [clickHearts, setClickHearts] = useState([]);
 
   // Generate floating heart particles
   useEffect(() => {
+    const heartColors = ['#fb7185', '#f43f5e', '#fda4af', '#fbcfe8', '#ec4899', '#ffb3c1'];
+    
     const interval = setInterval(() => {
       const id = Math.random().toString(36).substr(2, 9);
       const newHeart = {
         id,
         left: Math.random() * 100, // random percentage across the screen width
-        scale: 0.4 + Math.random() * 0.8, // scale between 0.4 and 1.2
-        duration: 6 + Math.random() * 4, // floating duration between 6s and 10s
-        size: 16 + Math.random() * 20, // size in px
+        scale: 0.3 + Math.random() * 0.9, // scale between 0.3 and 1.2
+        duration: 8 + Math.random() * 6, // floating duration between 8s and 14s
+        size: 14 + Math.random() * 22, // size in px
+        color: heartColors[Math.floor(Math.random() * heartColors.length)],
+        opacity: 0.4 + Math.random() * 0.5, // opacity between 0.4 and 0.9
+        rotate: (Math.random() - 0.5) * 180, // target rotation
       };
 
-      setHearts(prev => [...prev.slice(-15), newHeart]); // Keep max 15 hearts in state
-    }, 800);
+      setHearts(prev => [...prev.slice(-20), newHeart]); // Keep max 20 hearts in state
+    }, 600);
 
     return () => clearInterval(interval);
   }, []);
 
+  // Handle clicking anywhere on the page to spawn hearts
+  const handlePageClick = (e) => {
+    // Don't spawn hearts if clicking a button or inside modal content
+    if (e.target.closest('button') || e.target.closest('.cute-modal-content')) return;
+
+    const count = 6;
+    const newHearts = [];
+    for (let i = 0; i < count; i++) {
+      const id = Math.random().toString(36).substr(2, 9);
+      const dx = (Math.random() - 0.5) * 200; // horizontal scatter
+      const dy = -100 - Math.random() * 150; // vertical rise
+      const scale = 0.4 + Math.random() * 0.8;
+
+      newHearts.push({
+        id,
+        x: e.clientX,
+        y: e.clientY,
+        dx,
+        dy,
+        scale,
+      });
+    }
+
+    setClickHearts(prev => [...prev, ...newHearts]);
+
+    // Cleanup after 1 second (match animation duration)
+    setTimeout(() => {
+      setClickHearts(prev => prev.filter(h => !newHearts.find(nh => nh.id === h.id)));
+    }, 1000);
+  };
+
   return (
-    <div className="min-h-screen bg-romantic-grid text-slate-800 flex flex-col justify-between selection:bg-rose-200">
+    <div 
+      onClick={handlePageClick}
+      className="min-h-screen bg-romantic-grid text-slate-800 flex flex-col justify-between selection:bg-rose-200 relative"
+    >
       
       {/* Floating Hearts Background Container */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
@@ -40,10 +80,36 @@ function LandingPage() {
               width: `${heart.size}px`,
               height: `${heart.size}px`,
               animationDuration: `${heart.duration}s`,
-              transform: `scale(${heart.scale})`,
+              color: heart.color,
+              '--scale': heart.scale,
+              '--opacity': heart.opacity,
+              '--rotate': `${heart.rotate}deg`,
             }}
             fill="currentColor"
             viewBox="0 0 24 24"
+          >
+            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+          </svg>
+        ))}
+      </div>
+
+      {/* Click Hearts Emitters Overlay */}
+      <div className="fixed inset-0 pointer-events-none z-50 overflow-hidden">
+        {clickHearts.map(heart => (
+          <svg
+            key={heart.id}
+            className="heart-particle"
+            style={{
+              left: `${heart.x}px`,
+              top: `${heart.y}px`,
+              '--dx': `${heart.dx}px`,
+              '--dy': `${heart.dy}px`,
+              '--scale': heart.scale,
+            }}
+            fill="currentColor"
+            viewBox="0 0 24 24"
+            width="24"
+            height="24"
           >
             <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
           </svg>

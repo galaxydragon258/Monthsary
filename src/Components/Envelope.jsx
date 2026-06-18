@@ -21,32 +21,32 @@ function Envelope({ onOpenGift, onOpenGallery, onOpenLetter }) {
         <div className={`envelope ${isOpen ? 'open' : ''}`}>
 
           {/* Back Pocket (Light Pink Inside) */}
-          <svg className="envelope-svg-layer envelope-back-svg" viewBox="0 0 380 250">
-            <rect width="380" height="250" rx="12" fill="#fff1f2" stroke="#fecdd3" strokeWidth="2" />
+          <svg className="envelope-svg-layer envelope-back-svg" viewBox="0 0 380 280">
+            <rect width="380" height="280" rx="12" fill="#fff1f2" stroke="#fecdd3" strokeWidth="2" />
             {/* Cute mini heart stamp inside */}
-            <path
-              d="M190 135 c-6-10-20-10-20 2 c0 12 20 23 20 23 s20-11 20-23 c0-12-14-12-20-2"
-              fill="#fda4af"
+            <path 
+              d="M190 150 c-6-10-20-10-20 2 c0 12 20 23 20 23 s20-11 20-23 c0-12-14-12-20-2" 
+              fill="#fda4af" 
               opacity="0.3"
             />
           </svg>
 
           {/* Top Flap (Rotates Upwards) */}
           <div className="envelope-flap-svg">
-            <svg viewBox="0 0 380 125" className="w-full h-full drop-shadow-sm">
-              <path d="M 0,0 L 190,120 L 380,0 Z" fill="#fb7185" stroke="#f43f5e" strokeWidth="1" />
+            <svg viewBox="0 0 380 140" className="w-full h-full drop-shadow-sm">
+              <path d="M 0,0 L 190,135 L 380,0 Z" fill="#fb7185" stroke="#f43f5e" strokeWidth="1" />
               {/* Gold borders on flap */}
-              <path d="M 0,0 L 190,117 L 380,0" fill="none" stroke="#ffe4e6" strokeWidth="1.5" strokeDasharray="4" />
+              <path d="M 0,0 L 190,132 L 380,0" fill="none" stroke="#ffe4e6" strokeWidth="1.5" strokeDasharray="4" />
             </svg>
           </div>
 
           {/* Letter / Choice Menu Card */}
-          <div className="envelope-letter-card flex flex-col  justify-between ">
+          <div className="envelope-letter-card flex flex-col justify-between">
             <div className="text-center space-y-1">
-              <h3 className="font-pacifico text-lg text-rose-600">
+              <h3 className="font-pacifico text-2xl text-rose-600">
                 Happy Monthsary! 💕
               </h3>
-              <p className="font-caveat text-base text-rose-800 leading-relaxed font-semibold">
+              <p className="font-caveat text-2xl text-rose-800 leading-relaxed font-semibold">
                 I prepared three sweet surprises for you. Select one below to begin...
               </p>
             </div>
@@ -77,15 +77,15 @@ function Envelope({ onOpenGift, onOpenGallery, onOpenLetter }) {
           </div>
 
           {/* Front Pocket Overlay (overlaps the closed letter) */}
-          <svg className="envelope-svg-layer envelope-front-svg" viewBox="0 0 380 250">
+          <svg className="envelope-svg-layer envelope-front-svg" viewBox="0 0 380 280">
             {/* Left triangular fold */}
-            <path d="M 0,0 L 180,125 L 0,250 Z" fill="#ffe4e6" opacity="0.95" />
+            <path d="M 0,0 L 180,140 L 0,280 Z" fill="#ffe4e6" opacity="0.95" />
             {/* Right triangular fold */}
-            <path d="M 380,0 L 200,125 L 380,250 Z" fill="#ffe4e6" opacity="0.95" />
+            <path d="M 380,0 L 200,140 L 380,280 Z" fill="#ffe4e6" opacity="0.95" />
             {/* Bottom triangular fold */}
-            <path d="M 0,250 L 190,115 L 380,250 Z" fill="#fecdd3" opacity="0.98" />
+            <path d="M 0,280 L 190,130 L 380,280 Z" fill="#fecdd3" opacity="0.98" />
             {/* Decorative white dash border */}
-            <path d="M 0,250 L 190,117 L 380,250" fill="none" stroke="#fff" strokeWidth="2" strokeDasharray="6" />
+            <path d="M 0,280 L 190,132 L 380,280" fill="none" stroke="#fff" strokeWidth="2" strokeDasharray="6" />
           </svg>
 
           {/* Interactive Red Wax Seal Heart */}
